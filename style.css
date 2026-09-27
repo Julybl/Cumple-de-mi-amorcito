@@ -1,0 +1,1153 @@
+
+/* =========================================================
+   BIRTHDAY QUEST
+   STYLE.CSS
+   ========================================================= */
+
+
+/* =========================================================
+   01. RESET
+   ========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    background: #050708;
+    color: #ffffff;
+    font-family: "Manrope", sans-serif;
+    overflow: hidden;
+}
+
+button {
+    font: inherit;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+
+/* =========================================================
+   02. LOADER
+   ========================================================= */
+
+.loader {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #050708;
+
+    transition:
+        opacity 0.8s ease,
+        visibility 0.8s ease;
+}
+
+.loader.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.loader-content {
+    width: min(420px, 80%);
+    text-align: center;
+}
+
+.loader-symbol {
+    font-size: 48px;
+    margin-bottom: 28px;
+
+    animation: heartbeat 1.5s infinite;
+}
+
+.loader-small {
+    font-family: "DM Mono", monospace;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    opacity: 0.6;
+    margin-bottom: 18px;
+}
+
+.loader-bar {
+    width: 100%;
+    height: 2px;
+
+    background: rgba(255, 255, 255, 0.1);
+
+    overflow: hidden;
+}
+
+.loader-bar span {
+    display: block;
+    width: 0;
+    height: 100%;
+
+    background: #ffffff;
+
+    transition: width 0.2s ease;
+}
+
+#loader-text {
+    margin-top: 15px;
+
+    font-family: "DM Mono", monospace;
+    font-size: 10px;
+
+    opacity: 0.4;
+}
+
+
+/* =========================================================
+   03. BACKGROUND
+   ========================================================= */
+
+.background {
+    position: fixed;
+    inset: 0;
+    z-index: -10;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 50%,
+            rgba(36, 90, 75, 0.18),
+            transparent 45%
+        ),
+        #050708;
+}
+
+.grid {
+    position: absolute;
+    inset: -50%;
+
+    background-image:
+        linear-gradient(
+            rgba(255, 255, 255, 0.025) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255, 255, 255, 0.025) 1px,
+            transparent 1px
+        );
+
+    background-size: 70px 70px;
+
+    transform: perspective(700px) rotateX(65deg);
+
+    transform-origin: center bottom;
+
+    opacity: 0.5;
+}
+
+.glow {
+    position: absolute;
+
+    width: 500px;
+    height: 500px;
+
+    border-radius: 50%;
+
+    filter: blur(120px);
+
+    opacity: 0.12;
+}
+
+.glow-1 {
+    background: #287c68;
+    top: -200px;
+    left: -150px;
+}
+
+.glow-2 {
+    background: #6c4c8d;
+    right: -200px;
+    bottom: -200px;
+}
+
+
+/* =========================================================
+   04. STARS
+   ========================================================= */
+
+.stars {
+    position: absolute;
+    inset: 0;
+
+    background-image:
+        radial-gradient(
+            1px 1px at 10% 20%,
+            rgba(255,255,255,.8),
+            transparent
+        ),
+        radial-gradient(
+            1px 1px at 20% 70%,
+            rgba(255,255,255,.5),
+            transparent
+        ),
+        radial-gradient(
+            1px 1px at 40% 30%,
+            rgba(255,255,255,.7),
+            transparent
+        ),
+        radial-gradient(
+            1px 1px at 60% 80%,
+            rgba(255,255,255,.5),
+            transparent
+        ),
+        radial-gradient(
+            1px 1px at 80% 25%,
+            rgba(255,255,255,.8),
+            transparent
+        ),
+        radial-gradient(
+            1px 1px at 90% 65%,
+            rgba(255,255,255,.6),
+            transparent
+        );
+
+    background-size: 250px 250px;
+
+    animation: starsMove 25s linear infinite;
+}
+
+
+/* =========================================================
+   05. MUSIC
+   ========================================================= */
+
+.music-button {
+    position: fixed;
+
+    right: 25px;
+    top: 25px;
+
+    z-index: 100;
+
+    width: 42px;
+    height: 42px;
+
+    border-radius: 50%;
+
+    border: 1px solid rgba(255,255,255,.15);
+
+    background: rgba(0,0,0,.35);
+
+    color: #fff;
+
+    cursor: pointer;
+
+    backdrop-filter: blur(10px);
+
+    transition: .3s ease;
+}
+
+.music-button:hover {
+    transform: scale(1.08);
+    border-color: rgba(255,255,255,.5);
+}
+
+
+/* =========================================================
+   06. CHAPTERS
+   ========================================================= */
+
+#app {
+    width: 100%;
+    height: 100vh;
+}
+
+.chapter {
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100vh;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    padding:
+        80px
+        30px
+        60px;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transform:
+        translateY(40px)
+        scale(.98);
+
+    transition:
+        opacity .8s ease,
+        transform .8s ease,
+        visibility .8s ease;
+
+    overflow-y: auto;
+}
+
+.chapter.active {
+    opacity: 1;
+    visibility: visible;
+
+    transform:
+        translateY(0)
+        scale(1);
+
+    z-index: 5;
+}
+
+.chapter-content {
+    width: min(1100px, 100%);
+
+    margin: auto;
+
+    text-align: center;
+}
+
+
+/* =========================================================
+   07. TYPOGRAPHY
+   ========================================================= */
+
+.eyebrow,
+.chapter-number {
+    font-family: "DM Mono", monospace;
+
+    font-size: 10px;
+
+    letter-spacing: .3em;
+
+    opacity: .5;
+
+    margin-bottom: 25px;
+}
+
+h1 {
+    font-size: clamp(52px, 9vw, 120px);
+
+    line-height: .92;
+
+    letter-spacing: -.07em;
+
+    font-weight: 800;
+}
+
+h1 span,
+h2 span {
+    display: block;
+
+    opacity: .35;
+}
+
+h2 {
+    font-size: clamp(36px, 6vw, 76px);
+
+    line-height: .98;
+
+    letter-spacing: -.055em;
+
+    font-weight: 800;
+
+    margin-bottom: 60px;
+}
+
+.intro-description {
+    margin-top: 30px;
+
+    color: rgba(255,255,255,.5);
+
+    font-size: 15px;
+}
+
+
+/* =========================================================
+   08. BUTTONS
+   ========================================================= */
+
+.primary-button {
+    margin-top: 45px;
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 20px;
+
+    padding: 15px 23px;
+
+    border: 1px solid rgba(255,255,255,.2);
+
+    background: rgba(255,255,255,.04);
+
+    color: #fff;
+
+    font-family: "DM Mono", monospace;
+
+    font-size: 11px;
+
+    letter-spacing: .15em;
+
+    cursor: pointer;
+
+    transition:
+        background .3s ease,
+        border .3s ease,
+        transform .3s ease;
+}
+
+.primary-button:hover {
+    background: rgba(255,255,255,.1);
+
+    border-color: rgba(255,255,255,.5);
+
+    transform: translateY(-3px);
+}
+
+.primary-button:active {
+    transform: translateY(0);
+}
+
+.hidden {
+    display: none !important;
+}
+
+
+/* =========================================================
+   09. SCROLL INDICATOR
+   ========================================================= */
+
+.scroll-indicator {
+    position: absolute;
+
+    bottom: 25px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    width: 1px;
+    height: 45px;
+
+    background: rgba(255,255,255,.15);
+
+    overflow: hidden;
+}
+
+.scroll-indicator span {
+    display: block;
+
+    width: 100%;
+    height: 40%;
+
+    background: #fff;
+
+    animation:
+        scrollIndicator 1.8s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   10. DISTANCE
+   ========================================================= */
+
+.distance-map {
+    position: relative;
+
+    width: min(900px, 95%);
+
+    height: 180px;
+
+    margin: 0 auto 20px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+}
+
+.location {
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+}
+
+.location-dot {
+    width: 12px;
+    height: 12px;
+
+    border-radius: 50%;
+
+    background: #fff;
+
+    box-shadow:
+        0 0 0 8px rgba(255,255,255,.05),
+        0 0 30px rgba(255,255,255,.5);
+}
+
+.location-info {
+    text-align: left;
+}
+
+.location-info strong {
+    display: block;
+
+    font-size: 13px;
+
+    letter-spacing: .15em;
+}
+
+.location-info small {
+    display: block;
+
+    font-family: "DM Mono", monospace;
+
+    font-size: 9px;
+
+    opacity: .4;
+
+    margin-top: 5px;
+}
+
+.location-spain {
+    flex-direction: row-reverse;
+}
+
+.location-spain .location-info {
+    text-align: right;
+}
+
+.flight-path {
+    position: absolute;
+
+    left: 7%;
+    right: 7%;
+
+    top: 50%;
+
+    border-top:
+        1px dashed
+        rgba(255,255,255,.2);
+}
+
+.plane {
+    position: absolute;
+
+    left: 0;
+
+    top: -13px;
+
+    font-size: 18px;
+
+    animation:
+        planeFlight 5s ease-in-out infinite;
+}
+
+.distance-message {
+    margin-top: 20px;
+}
+
+.distance-number {
+    font-family: "DM Mono", monospace;
+
+    font-size: clamp(40px, 8vw, 80px);
+
+    letter-spacing: -.05em;
+}
+
+.distance-number small {
+    font-size: 15px;
+
+    opacity: .4;
+}
+
+.distance-message p {
+    margin-top: 15px;
+
+    line-height: 1.7;
+
+    color: rgba(255,255,255,.45);
+}
+
+
+/* =========================================================
+   11. TIMELINE
+   ========================================================= */
+
+.timeline {
+    position: relative;
+
+    width: min(700px, 100%);
+
+    margin: auto;
+
+    text-align: left;
+}
+
+.timeline::before {
+    content: "";
+
+    position: absolute;
+
+    left: 22px;
+    top: 0;
+    bottom: 0;
+
+    width: 1px;
+
+    background:
+        linear-gradient(
+            transparent,
+            rgba(255,255,255,.2),
+            transparent
+        );
+}
+
+.timeline-item {
+    position: relative;
+
+    display: flex;
+
+    gap: 35px;
+
+    margin-bottom: 45px;
+}
+
+.timeline-marker {
+    flex-shrink: 0;
+
+    position: relative;
+
+    width: 45px;
+    height: 45px;
+
+    display: grid;
+
+    place-items: center;
+
+    border:
+        1px solid
+        rgba(255,255,255,.15);
+
+    background: #080b0c;
+
+    border-radius: 50%;
+
+    font-family: "DM Mono", monospace;
+
+    font-size: 10px;
+
+    z-index: 2;
+}
+
+.timeline-card {
+    padding-top: 4px;
+}
+
+.timeline-date {
+    font-family: "DM Mono", monospace;
+
+    font-size: 9px;
+
+    letter-spacing: .2em;
+
+    opacity: .4;
+}
+
+.timeline-card h3 {
+    margin-top: 8px;
+
+    font-size: 20px;
+}
+
+.timeline-card p {
+    margin-top: 10px;
+
+    color: rgba(255,255,255,.45);
+
+    font-size: 13px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   12. MEMORY GRID
+   ========================================================= */
+
+.memory-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 20px;
+
+    width: min(1000px, 100%);
+
+    margin: auto;
+}
+
+.memory-card {
+    text-align: left;
+
+    border:
+        1px solid
+        rgba(255,255,255,.08);
+
+    background:
+        rgba(255,255,255,.025);
+
+    backdrop-filter: blur(10px);
+
+    transition:
+        transform .4s ease,
+        border .4s ease;
+}
+
+.memory-card:hover {
+    transform: translateY(-8px);
+
+    border-color:
+        rgba(255,255,255,.25);
+}
+
+.memory-image {
+    aspect-ratio: 4 / 5;
+
+    overflow: hidden;
+
+    background: #101415;
+}
+
+.memory-image img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    transition:
+        transform .6s ease;
+}
+
+.memory-card:hover img {
+    transform: scale(1.05);
+}
+
+.memory-content {
+    padding: 20px;
+}
+
+.memory-content span {
+    font-family: "DM Mono", monospace;
+
+    font-size: 9px;
+
+    letter-spacing: .2em;
+
+    opacity: .4;
+}
+
+.memory-content p {
+    margin-top: 10px;
+
+    font-size: 13px;
+
+    line-height: 1.6;
+
+    color: rgba(255,255,255,.65);
+}
+
+
+/* =========================================================
+   13. QUIZ
+   ========================================================= */
+
+.quiz-container {
+    width: min(600px, 100%);
+
+    margin: auto;
+
+    padding: 40px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+    background:
+        rgba(255,255,255,.025);
+
+    backdrop-filter: blur(15px);
+}
+
+.quiz-progress {
+    font-family: "DM Mono", monospace;
+
+    font-size: 10px;
+
+    opacity: .4;
+
+    margin-bottom: 30px;
+}
+
+.quiz-question {
+    font-size: 25px;
+
+    line-height: 1.3;
+
+    margin-bottom: 30px;
+}
+
+.quiz-options {
+    display: grid;
+
+    gap: 10px;
+}
+
+.quiz-option {
+    width: 100%;
+
+    padding: 15px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+    background:
+        rgba(255,255,255,.025);
+
+    color: #fff;
+
+    cursor: pointer;
+
+    text-align: left;
+
+    transition: .25s ease;
+}
+
+.quiz-option:hover {
+    background:
+        rgba(255,255,255,.08);
+
+    transform: translateX(4px);
+}
+
+.quiz-option.correct {
+    border-color:
+        rgba(100,255,180,.6);
+
+    background:
+        rgba(100,255,180,.08);
+}
+
+.quiz-option.wrong {
+    border-color:
+        rgba(255,100,100,.5);
+
+    background:
+        rgba(255,100,100,.06);
+}
+
+.quiz-option.disabled {
+    pointer-events: none;
+}
+
+.quiz-feedback {
+    min-height: 25px;
+
+    margin-top: 20px;
+
+    font-family: "DM Mono", monospace;
+
+    font-size: 10px;
+
+    letter-spacing: .08em;
+}
+
+
+/* =========================================================
+   14. FINAL
+   ========================================================= */
+
+.final-content {
+    position: relative;
+
+    z-index: 2;
+}
+
+.final-reveal {
+    max-width: 750px;
+
+    margin: auto;
+}
+
+.final-small {
+    font-family: "DM Mono", monospace;
+
+    font-size: 11px;
+
+    letter-spacing: .3em;
+
+    opacity: .45;
+
+    margin-bottom: 25px;
+}
+
+.final-reveal h2 {
+    margin-bottom: 25px;
+
+    font-size: clamp(55px, 10vw, 120px);
+}
+
+.final-line {
+    width: 80px;
+    height: 1px;
+
+    margin: 30px auto;
+
+    background: rgba(255,255,255,.3);
+}
+
+.final-message {
+    font-size: 15px;
+
+    line-height: 1.8;
+
+    color: rgba(255,255,255,.55);
+}
+
+.final-message strong {
+    color: #fff;
+
+    font-size: 20px;
+}
+
+.final-heart {
+    margin: 50px auto 30px;
+
+    font-size: 42px;
+
+    animation: heartbeat 1.5s infinite;
+}
+
+.final-footer {
+    font-family: "DM Mono", monospace;
+
+    font-size: 8px;
+
+    letter-spacing: .25em;
+
+    opacity: .3;
+}
+
+
+/* =========================================================
+   15. ANIMATIONS
+   ========================================================= */
+
+@keyframes heartbeat {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    15% {
+        transform: scale(1.15);
+    }
+
+    30% {
+        transform: scale(1);
+    }
+
+    45% {
+        transform: scale(1.1);
+    }
+}
+
+@keyframes starsMove {
+
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(-250px);
+    }
+}
+
+@keyframes scrollIndicator {
+
+    0% {
+        transform: translateY(-100%);
+    }
+
+    50% {
+        transform: translateY(250%);
+    }
+
+    100% {
+        transform: translateY(250%);
+    }
+}
+
+@keyframes planeFlight {
+
+    0% {
+        left: 0;
+    }
+
+    50% {
+        left: 50%;
+    }
+
+    100% {
+        left: 100%;
+    }
+}
+
+
+/* =========================================================
+   16. RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 800px) {
+
+    .chapter {
+        padding:
+            80px
+            20px
+            40px;
+    }
+
+    h1 {
+        font-size: clamp(48px, 14vw, 80px);
+    }
+
+    h2 {
+        font-size: clamp(35px, 11vw, 60px);
+
+        margin-bottom: 40px;
+    }
+
+    .distance-map {
+        width: 100%;
+    }
+
+    .location-info strong {
+        font-size: 10px;
+    }
+
+    .memory-grid {
+        grid-template-columns: 1fr;
+        width: min(450px, 100%);
+    }
+
+    .memory-card {
+        display: grid;
+
+        grid-template-columns: 120px 1fr;
+    }
+
+    .memory-image {
+        aspect-ratio: 1;
+    }
+
+    .memory-content {
+        display: flex;
+
+        flex-direction: column;
+
+        justify-content: center;
+    }
+
+    .quiz-container {
+        padding: 25px;
+    }
+
+    .quiz-question {
+        font-size: 20px;
+    }
+}
+
+
+@media (max-width: 500px) {
+
+    .music-button {
+        top: 15px;
+        right: 15px;
+    }
+
+    .chapter {
+        align-items: flex-start;
+
+        padding-top: 100px;
+    }
+
+    .distance-map {
+        height: 130px;
+    }
+
+    .location {
+        gap: 8px;
+    }
+
+    .location-dot {
+        width: 8px;
+        height: 8px;
+    }
+
+    .flight-path {
+        left: 12%;
+        right: 12%;
+    }
+
+    .timeline-item {
+        gap: 18px;
+    }
+
+    .timeline-marker {
+        width: 38px;
+        height: 38px;
+    }
+
+    .timeline::before {
+        left: 19px;
+    }
+
+    .memory-card {
+        grid-template-columns: 100px 1fr;
+    }
+
+    .memory-content {
+        padding: 14px;
+    }
+
+    .primary-button {
+        margin-top: 30px;
+    }
+}

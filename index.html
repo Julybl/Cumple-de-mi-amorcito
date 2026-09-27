@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Cumpleaños de mi amorcito</title>
+
+    <meta
+        name="description"
+        content="Una pequeña aventura creada especialmente para vos, mi dulzura."
+    >
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Manrope:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- =====================================================
+         LOADING SCREEN
+    ====================================================== -->
+
+    <div id="loader" class="loader">
+        <div class="loader-content">
+
+            <div class="loader-symbol">♥</div>
+
+            <p class="loader-small">
+                PREPARANDO TU REGALO
+            </p>
+
+            <div class="loader-bar">
+                <span id="loader-progress"></span>
+            </div>
+
+            <p id="loader-text">
+                Cargando cositas lindas...
+            </p>
+
+        </div>
+    </div>
+
+
+    <!-- =====================================================
+         BACKGROUND
+    ====================================================== -->
+
+    <div class="background">
+
+        <div class="stars"></div>
+
+        <div class="glow glow-1"></div>
+        <div class="glow glow-2"></div>
+
+        <div class="grid"></div>
+
+    </div>
+
+
+    <!-- =====================================================
+         MUSIC
+    ====================================================== -->
+
+    <audio id="background-music" loop>
+        <source src="assets/music.mp3" type="audio/mpeg">
+    </audio>
+
+    <button
+        id="music-button"
+        class="music-button"
+        aria-label="Activar música"
+    >
+        ♪
+    </button>
+
+
+    <!-- =====================================================
+         MAIN
+    ====================================================== -->
+
+    <main id="app">
+
+
+        <!-- =================================================
+             CHAPTER 01 — INTRO
+        ================================================== -->
+
+        <section
+            id="chapter-intro"
+            class="chapter active"
+        >
+
+            <div class="chapter-content intro-content">
+
+                <p class="eyebrow">
+                    Cumpleaños de mi niño lindo · 2026
+                </p>
+
+                <h1>
+                    Tengo algo
+                    <span>preparado para vos, mi tesoro.</span>
+                </h1>
+
+                <p class="intro-description">
+                    Pero antes vas a tener que descubrirlo.
+                </p>
+
+                <button
+                    class="primary-button next-button"
+                    data-next="distance"
+                >
+                    <span>COMENZAR</span>
+                    <span>→</span>
+                </button>
+
+            </div>
+
+            <div class="scroll-indicator">
+                <span></span>
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             CHAPTER 02 — DISTANCE
+        ================================================== -->
+
+        <section
+            id="chapter-distance"
+            class="chapter"
+        >
+
+            <div class="chapter-content">
+
+                <p class="chapter-number">
+                    01 / DISTANCE
+                </p>
+
+                <h2>
+                    Miles de kilómetros.
+                    <span>Pero siempre unidos de la mano (y de los amagos)</span>
+                </h2>
+
+                <div class="distance-map">
+
+                    <div class="location location-argentina">
+
+                        <div class="location-pulse"></div>
+
+                        <span class="location-dot"></span>
+
+                        <div class="location-info">
+                            <strong>ARGENTINA</strong>
+                            <small>JULY</small>
+                        </div>
+
+                    </div>
+
+
+                    <div class="flight-path">
+
+                        <span class="plane">✈</span>
+
+                    </div>
+
+
+                    <div class="location location-spain">
+
+                        <div class="location-pulse"></div>
+
+                        <span class="location-dot"></span>
+
+                        <div class="location-info">
+                            <strong>ESPAÑA</strong>
+                            <small>IVÁN</small>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="distance-message">
+
+                    <div class="distance-number">
+                        <span id="distance-counter">
+                            0
+                        </span>
+                        <small> KM</small>
+                    </div>
+
+                    <p>
+                        Puede haber un gran océano entre nosotros.
+                        <br>
+                        Pero nunca fue suficiente para separarnos.
+                    </p>
+
+                </div>
+
+                <button
+                    class="primary-button next-button"
+                    data-next="story"
+                >
+                    CONTINUAR →
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             CHAPTER 03 — STORY
+        ================================================== -->
+
+        <section
+            id="chapter-story"
+            class="chapter"
+        >
+
+            <div class="chapter-content">
+
+                <p class="chapter-number">
+                    02 / NUESTRA HISTORIA
+                </p>
+
+                <h2>
+                    Y entonces...
+                    <span>empezó nuestra pechocha historia.</span>
+                </h2>
+
+
+                <div class="timeline">
+
+
+                    <article class="timeline-item">
+
+                        <div class="timeline-marker">
+                            01
+                        </div>
+
+                        <div class="timeline-card">
+
+                            <span class="timeline-date">
+                                EL COMIENZO DE UNA RELACIÓN MARAVILLOSA
+                            </span>
+
+                            <h3>
+                                El día que todo empezó.
+                            </h3>
+
+                            <p>
+                                Una tarde del 26/03/2025, donde empezamos las llamadas frecuentes en el grupo de admins, y, ahí me percaté lo mucho que me gustaba estar contigo, lo mucho que hacías mi corazón latir.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="timeline-item">
+
+                        <div class="timeline-marker">
+                            02
+                        </div>
+
+                        <div class="timeline-card">
+
+                            <span class="timeline-date">
+                                Y poco a poco...
+                            </span>
+
+                            <h3>
+                                Fui derritiendo las barreras de hielo de tu corazón.
+                            </h3>
+
+                            <p>
+                               Y finalmente pude tomarte la mano ese día y te dije directamente a los ojos "Te amo". Y al día de hoy mi amor por ti no ha decaido ni un poco. Se fue haciendo más fuerte, intenso y poderoso.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="timeline-item">
+
+                        <div class="timeline-marker">
+                            03
+                        </div>
+
+                        <div class="timeline-card">
+
+                            <span class="timeline-date">
+                                Y HOY, EN TU CUMPLEAÑOS.
+                            </span>
+
+                            <h3>
+                                Seguimos aquí, tan unidos como nunca.
+                            </h3>
+
+                            <p>
+                                Con muchos kilómetros de distancia,
+                                pero con una historia que
+                                todavía se sigue escribiendo y haciendose como una flor que jamás se marchita y nuestro amor sigue siendo tan intenso y brillante como la luz del sol.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                </div>
+
+
+                <button
+                    class="primary-button next-button"
+                    data-next="memories"
+                >
+                    VER RECUERDOS →
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             CHAPTER 04 — MEMORIES
+        ================================================== -->
+
+        <section
+            id="chapter-memories"
+            class="chapter"
+        >
+
+            <div class="chapter-content">
+
+                <p class="chapter-number">
+                    03 / MEMORIAS
+                </p>
+
+                <h2>
+                    Algunas cosas
+                    <span>merecen quedarse para siempre, como yo quiero quedarme contigo.</span>
+                </h2>
+
+
+                <div class="memory-grid">
+
+
+                    <article class="memory-card">
+
+                        <div class="memory-image">
+                            <img
+                                src="assets/photo1.jpg"
+                                alt="Nuestro recuerdo"
+                            >
+                        </div>
+
+                        <div class="memory-content">
+
+                            <span>
+                                RECUERDO 01
+                            </span>
+
+                            <p>
+                                ¡Comprometidos! :D
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="memory-card">
+
+                        <div class="memory-image">
+                            <img
+                                src="assets/photo2.jpg"
+                                alt="Nuestro recuerdo"
+                            >
+                        </div>
+
+                        <div class="memory-content">
+
+                            <span>
+                                RECUERDO 02
+                            </span>
+
+                            <p>
+                                Cuando jugamos con todos y nos pusimos a bailar con Álvaro, Cande siempre adulta responsable. XD
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="memory-card">
+
+                        <div class="memory-image">
+                            <img
+                                src="assets/photo3.jpg"
+                                alt="Nuestro recuerdo"
+                            >
+                        </div>
+
+                        <div class="memory-content">
+
+                            <span>
+                                RECUERDO 03
+                            </span>
+
+                            <p>
+                                Dibujo antes de la final del mundial. Tenemos muchos recuerdos juntos y todavía quedan muchísimos más, mi amor.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                </div>
+
+
+                <button
+                    class="primary-button next-button"
+                    data-next="game"
+                >
+                    SIGUIENTE →
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             CHAPTER 05 — MINI GAME
+        ================================================== -->
+
+        <section
+            id="chapter-game"
+            class="chapter"
+        >
+
+            <div class="chapter-content">
+
+                <p class="chapter-number">
+                    04 / JUEGUITO
+                </p>
+
+                <h2>
+                    Ahora un test 
+                    <span>sobre nosotros.</span>
+                </h2>
+
+
+                <div class="quiz-container">
+
+                    <div class="quiz-progress">
+
+                        <span id="question-number">
+                            1
+                        </span>
+
+                        /
+                        
+                        <span id="total-questions">
+                            3
+                        </span>
+
+                    </div>
+
+
+                    <div
+                        id="quiz-question"
+                        class="quiz-question"
+                    >
+                        ¿Cuál fue nuestro primer Ship?
+                    </div>
+
+
+                    <div
+                        id="quiz-options"
+                        class="quiz-options"
+                    >
+
+                        <button
+                            class="quiz-option"
+                            data-answer="wrong"
+                        >
+                            Kunigami x Chigiri fem
+                        </button>
+
+                        <button
+                            class="quiz-option"
+                            data-answer="correct"
+                        >
+                            Nagi x Reo fem
+                        </button>
+
+                        <button
+                            class="quiz-option"
+                            data-answer="wrong"
+                        >
+                            Maki x Yuta
+                        </button>
+
+                    </div>
+
+
+                    <div
+                        id="quiz-feedback"
+                        class="quiz-feedback"
+                    ></div>
+
+                </div>
+
+
+                <button
+                    id="game-next"
+                    class="primary-button hidden"
+                >
+                    SIGUIENTE →
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             CHAPTER 06 — FINAL
+        ================================================== -->
+
+        <section
+            id="chapter-final"
+            class="chapter"
+        >
+
+            <div class="final-background"></div>
+
+            <div class="chapter-content final-content">
+
+                <p class="eyebrow">
+                    FINAL
+                </p>
+
+                <div
+                    id="final-reveal"
+                    class="final-reveal"
+                >
+
+                    <p class="final-small">
+                        Mi Pechocho...
+                    </p>
+
+                    <h2>
+                        Feliz cumpleaños, mi amor.
+                    </h2>
+
+                    <div class="final-line"></div>
+
+                    <p class="final-message">
+
+                        Aunque hoy haya kilómetros
+                        entre nosotros,
+
+                        <br><br>
+
+                        quería construirte un pequeño
+                        lugar al que pudieras entrar
+                        y recordar cuánto te amo y te amaré
+                        cada día de mi vida intensamente.
+
+                        <br><br>
+
+                        Esto es solamente una página.
+
+                        <br>
+
+                        Pero todo lo que hay detrás
+                        de ella es real y sincera, vida mía.
+
+                        <br><br>
+
+                        <strong>
+                            Te amo tres millones. ❤️
+                        </strong>
+
+                    </p>
+
+                </div>
+
+
+                <div class="final-heart">
+                    ♥
+                </div>
+
+
+                <p class="final-footer">
+                    HECHO CON AMOR DE TU AMADA JULY
+                </p>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+    <script src="script.js"></script>
+
+</body>
+</html>
+```
