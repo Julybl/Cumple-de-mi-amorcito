@@ -1151,3 +1151,223 @@ h2 {
         margin-top: 30px;
     }
 }
+
+/* =========================================================
+   MEMORY IMAGES — MÁS GRANDES
+   ========================================================= */
+
+.memory-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    width: min(1200px, 95%);
+}
+
+.memory-image {
+    aspect-ratio: 3 / 4;
+    overflow: hidden;
+    background: #101415;
+    cursor: zoom-in;
+}
+
+.memory-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition:
+        transform .5s ease,
+        filter .4s ease;
+}
+
+.memory-card:hover .memory-image img {
+    transform: scale(1.04);
+    filter: brightness(1.08);
+}
+
+
+/* =========================================================
+   MEMORY LIGHTBOX
+   ========================================================= */
+
+.memory-lightbox {
+    position: fixed;
+    inset: 0;
+
+    z-index: 10000;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 30px;
+
+    background: rgba(0, 0, 0, .88);
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition:
+        opacity .35s ease,
+        visibility .35s ease;
+}
+
+.memory-lightbox.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+/* Imagen ampliada */
+
+.memory-lightbox img {
+    display: block;
+
+    max-width: min(92vw, 1400px);
+    max-height: 88vh;
+
+    width: auto;
+    height: auto;
+
+    object-fit: contain;
+
+    border-radius: 8px;
+
+    box-shadow:
+        0 25px 80px rgba(0, 0, 0, .7),
+        0 0 40px rgba(255, 255, 255, .08);
+
+    transform: scale(.92);
+
+    transition:
+        transform .4s cubic-bezier(.16, 1, .3, 1);
+}
+
+.memory-lightbox.active img {
+    transform: scale(1);
+}
+
+
+/* Botón cerrar */
+
+.memory-lightbox-close {
+    position: absolute;
+
+    top: 25px;
+    right: 30px;
+
+    width: 45px;
+    height: 45px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid rgba(255,255,255,.2);
+    border-radius: 50%;
+
+    background: rgba(0,0,0,.35);
+
+    color: white;
+
+    font-size: 24px;
+    line-height: 1;
+
+    cursor: pointer;
+
+    transition:
+        transform .25s ease,
+        background .25s ease,
+        border-color .25s ease;
+}
+
+.memory-lightbox-close:hover {
+    transform: rotate(90deg) scale(1.08);
+
+    background: rgba(255,255,255,.1);
+
+    border-color: rgba(255,255,255,.5);
+}
+
+
+/* Texto inferior */
+
+.memory-lightbox-caption {
+    position: absolute;
+
+    bottom: 25px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    font-family: "DM Mono", monospace;
+
+    font-size: 10px;
+
+    letter-spacing: .18em;
+
+    color: rgba(255,255,255,.55);
+
+    text-align: center;
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 800px) {
+
+    .memory-grid {
+        grid-template-columns: 1fr;
+        width: min(600px, 100%);
+    }
+
+    .memory-card {
+        display: block;
+    }
+
+    .memory-image {
+        aspect-ratio: 4 / 5;
+    }
+
+    .memory-content {
+        padding: 18px;
+    }
+
+    .memory-lightbox {
+        padding: 20px;
+    }
+
+    .memory-lightbox img {
+        max-width: 95vw;
+        max-height: 82vh;
+        border-radius: 5px;
+    }
+
+    .memory-lightbox-close {
+        top: 15px;
+        right: 15px;
+    }
+
+    .memory-lightbox-caption {
+        bottom: 15px;
+        font-size: 8px;
+    }
+}
+
+
+@media (max-width: 500px) {
+
+    .memory-image {
+        aspect-ratio: 1 / 1;
+    }
+
+    .memory-lightbox img {
+        max-width: 96vw;
+        max-height: 78vh;
+    }
+}
