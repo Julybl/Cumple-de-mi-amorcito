@@ -2098,3 +2098,95 @@
 
 
 })();
+
+/* =========================================================
+   MEMORY LIGHTBOX
+   ========================================================= */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const lightbox = document.getElementById("memory-lightbox");
+    const lightboxImage = document.getElementById("memory-lightbox-image");
+    const lightboxClose = document.getElementById("memory-lightbox-close");
+    const lightboxCaption = document.getElementById("memory-lightbox-caption");
+
+    const memoryImages = document.querySelectorAll(".memory-image img");
+
+    if (!lightbox || !lightboxImage || !lightboxClose) {
+        return;
+    }
+
+    /* Abrir imagen */
+
+    memoryImages.forEach((image) => {
+
+        image.addEventListener("click", () => {
+
+            lightboxImage.src = image.src;
+            lightboxImage.alt = image.alt || "Recuerdo";
+
+            const memoryCard = image.closest(".memory-card");
+
+            if (memoryCard) {
+
+                const label = memoryCard.querySelector(".memory-content span");
+
+                if (label) {
+                    lightboxCaption.textContent = label.textContent.trim();
+                } else {
+                    lightboxCaption.textContent = "";
+                }
+
+            }
+
+            lightbox.classList.add("active");
+            lightbox.setAttribute("aria-hidden", "false");
+
+            document.body.style.overflow = "hidden";
+        });
+
+    });
+
+
+    /* Cerrar */
+
+    function closeLightbox() {
+
+        lightbox.classList.remove("active");
+        lightbox.setAttribute("aria-hidden", "true");
+
+        document.body.style.overflow = "";
+
+        setTimeout(() => {
+            if (!lightbox.classList.contains("active")) {
+                lightboxImage.src = "";
+            }
+        }, 350);
+    }
+
+
+    lightboxClose.addEventListener("click", closeLightbox);
+
+
+    /* Cerrar haciendo click fuera de la imagen */
+
+    lightbox.addEventListener("click", (event) => {
+
+        if (event.target === lightbox) {
+            closeLightbox();
+        }
+
+    });
+
+
+    /* Cerrar con ESC */
+
+    document.addEventListener("keydown", (event) => {
+
+        if (event.key === "Escape" && lightbox.classList.contains("active")) {
+            closeLightbox();
+        }
+
+    });
+
+});
